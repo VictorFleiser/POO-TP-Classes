@@ -12,3 +12,6 @@ move_and_resize_window_with_actions_bool = True
 #non implémenté : 
 #create_additional_windows_for_sprite = True	#non implémenté : manque de temps
 #transparent_sprite_windows = True				#non implémenté : trop de différences pour le code en fonction du système d'exploitation
+
+#couleur de tous les textes dans les widgets :
+default_text_color = "white"

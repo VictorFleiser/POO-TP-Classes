@@ -14,6 +14,7 @@ Autres notes :
 - Les commentaire et noms de variables sont souvent un mix de Francais / Anglais, j'ai essayé de tout retraduire en Francais mais c'est possible que j'ai oublié certains commentaire/variables
 
 - Le programme n'a été testé que sur 1 version de MAC et Windows, je n'ai aucune idée comment Linux et les machines virtuelles vont intéragir avec le placement/déplacement/redimensionnement de fenêtres (cf ci-dessus si sa pose problème)
+Le programme est le plus agréable à l'oeuil sur MAC pour info
 
 - A la base je comptais avoir du texte coloré, et donc j'ai codé la plupart du code pré-tkinter avec des fonctions ajoutant des Ansi Escape Code au chaines de caractères pour colorer le texte, mais j'ai découvert que cela ne fonctionne que sur terminal, ignorer toute fonction colorant du texte dans TP1_classes_persos
 

@@ -47,8 +47,6 @@ class Personnage:
 		except ValueError :	#ne devrait jamais arriver
 			w.warn("Warning : Valeur passée dans le setter d'effet ne possède pas 2 valeurs\n", stacklevel=2) 
 		self.__effets[effet] += tours
-		if (self.__effets[effet] == 0):
-			print ("Effet " + str(effet) + " de " + self.__nom + " s'est dissipé.\n")
 
 	def all_info(self):
 		return ("Nom : " + self.__nom + "\n" + color_string("Points de vie : ", "green", couleurs_autorise_bool) + color_string(str(self.__pv), pv_color(self.__pv, self.__max_pv), couleurs_autorise_bool) + " / " + color_string(str(self.__max_pv), "cyan", couleurs_autorise_bool) + "\n")

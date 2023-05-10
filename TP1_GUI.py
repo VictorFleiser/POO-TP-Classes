@@ -5,6 +5,7 @@ from tkinter import messagebox
 import random
 import math
 from TP1_global_variables import *
+from tkinter import ttk
 
 class Application(tk.Tk):
 
@@ -48,8 +49,6 @@ class Application(tk.Tk):
 		#liste des personnages selectionnés
 		self.selected_list_joueur_1 = []
 		self.selected_list_joueur_2 = []
-
-		print("\033[94m hello \033[0m")
 
 		# on crée les widgets
 		self.creer_widgets()
@@ -254,17 +253,17 @@ class Application(tk.Tk):
 		self.rowconfigure(2, minsize=150, weight=1)
 
 		#Info box du personnage sélectionné en dernier du joueur 1
-		self.info_joueur_1_text_widget=tk.Text(self, height=40, bg="#222222")
+		self.info_joueur_1_text_widget=tk.Text(self, height=40, bg="#222222", foreground=default_text_color)
 		self.info_joueur_1_text_widget.insert('insert',self.info_personnage_joueur_1)
 		self.info_joueur_1_text_widget.grid(column=0, row=1, columnspan = 2, sticky=tk.NW, padx=3, pady=3)
 
 		#Info box du personnage sélectionné en dernier du joueur 2
-		self.info_joueur_2_text_widget=tk.Text(self, height=40, bg="#222222")
+		self.info_joueur_2_text_widget=tk.Text(self, height=40, bg="#222222", foreground=default_text_color)
 		self.info_joueur_2_text_widget.insert('insert',self.info_personnage_joueur_2)
 		self.info_joueur_2_text_widget.grid(column=2, row=1, columnspan = 2, sticky=tk.NE, padx=3, pady=3)
 
 		#Info box du jeu 
-		self.info_jeu_text_widget=tk.Text(self, height=40, bg="#222222")
+		self.info_jeu_text_widget=tk.Text(self, height=40, bg="#222222", foreground=default_text_color)
 		self.info_jeu_text_widget.insert('insert',self.info_jeu)
 		self.info_jeu_text_widget.grid(column=0, row=2, columnspan = 4, sticky=tk.S, padx=3, pady=3)
 
@@ -278,7 +277,8 @@ class Application(tk.Tk):
 			bg="#222", 
 			selectbackground="blue", 
 			selectmode=tk.MULTIPLE, 	#permet de selectionner plusieurs élements
-			exportselection=False		#empeche d'autres listbox d'enlever les selections de cette listbox
+			exportselection=False,		#empeche d'autres listbox d'enlever les selections de cette listbox
+			foreground=default_text_color
 			)
 		self.joueur_1_personnages_listbox_widget.grid(column=0, row=0, sticky=tk.EW, padx=5, pady=5, ipadx=5, ipady=5)
 		self.joueur_1_personnages_listbox_widget.bind("<ButtonPress-1>", self.on_select)
@@ -290,21 +290,22 @@ class Application(tk.Tk):
 			bg="#222", 
 			selectbackground="green",
 			selectmode=tk.MULTIPLE, 	#permet de selectionner plusieurs élements
-			exportselection=False		#empeche d'autres listbox d'enlever les selections de cette listbox
+			exportselection=False,		#empeche d'autres listbox d'enlever les selections de cette listbox
+			foreground=default_text_color
 			)
 		self.joueur_2_personnages_listbox_widget.grid(column=3, row=0, sticky=tk.EW, padx=5, pady=5, ipadx=5, ipady=5)
 		self.joueur_2_personnages_listbox_widget.bind("<ButtonPress-1>", self.on_select)
 
 		# Bouton attaquer
-		self.attaquer_button_widget = tk.Button(self, text="attaquer", highlightbackground=bg_color, activeforeground = "red", command=lambda: [self.action("attaquer"), self.deselect_all(), self.update_listbox_content(), self.update_info_box_content(), self.change_bg_color("#F00", bg_color, 500),self.enlarge_window(duration=50, enlarge_amount=(10,10)),self.enlarge_window(duration=50, enlarge_amount=(-10,-10))])
+		self.attaquer_button_widget = tk.Button(self, text="attaquer", highlightbackground=bg_color, activeforeground = "red", foreground="black", command=lambda: [self.action("attaquer"), self.deselect_all(), self.update_listbox_content(), self.update_info_box_content(), self.change_bg_color("#F00", bg_color, 500),self.enlarge_window(duration=50, enlarge_amount=(10,10)),self.enlarge_window(duration=50, enlarge_amount=(-10,-10))])
 		self.attaquer_button_widget.grid(column=1, row=0, sticky=tk.EW, padx=2)
 
 		# Bouton soigner
-		self.soigner_button_widget = tk.Button(self, text="soigner", highlightbackground=bg_color, activeforeground = "yellow", command=lambda: [self.action("soigner"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FF0", bg_color, 500),self.move_window_in_a_circle()])
+		self.soigner_button_widget = tk.Button(self, text="soigner", highlightbackground=bg_color, activeforeground = "yellow", foreground="black", command=lambda: [self.action("soigner"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FF0", bg_color, 500),self.move_window_in_a_circle()])
 		self.soigner_button_widget.grid(column=2, row=0, sticky=tk.EW, padx=2)
 
 		# Bouton pour passer son tour
-		self.passer_tour_button_widget = tk.Button(self, text="Rien faire", highlightbackground=bg_color, activeforeground = "white", command=lambda: [self.activate_secret_options(), self.action("nothing"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FFF", bg_color, 500), self.enlarge_window(duration=200, enlarge_amount=(-20,-20)), self.enlarge_window(duration=200, enlarge_amount=(20,20))])
+		self.passer_tour_button_widget = tk.Button(self, text="Rien faire", highlightbackground=bg_color, activeforeground = "white", foreground="black", command=lambda: [self.activate_secret_options(), self.action("nothing"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FFF", bg_color, 500), self.enlarge_window(duration=200, enlarge_amount=(-20,-20)), self.enlarge_window(duration=200, enlarge_amount=(20,20))])
 		self.passer_tour_button_widget.grid(column=1, row=0, columnspan = 2, sticky=tk.S, padx=2)
 
 		# Bouton de Tests [IGNORER]
@@ -320,11 +321,11 @@ class Application(tk.Tk):
 #		self.ajouter_personnage_J2_button_widget.grid(column=3, row=2, sticky=tk.SE, padx=2)
 
 		# Bouton ajouter personnage pour joueur 1 VERSION 2
-		self.ajouter_personnage_J1_button_widget = tk.Button(self, text="Ajouter Personnage", highlightbackground=bg_color, activeforeground = "blue", command=lambda: [self.creer_personnage(0), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#00F", bg_color, 500), self.move_resize_window(duration=100, final_position=(0,20)), self.move_resize_window(duration=100, final_position=(0,-20))])
+		self.ajouter_personnage_J1_button_widget = tk.Button(self, text="Ajouter Personnage", highlightbackground=bg_color, activeforeground = "blue", foreground="black", command=lambda: [self.creer_personnage(0), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#00F", bg_color, 500), self.move_resize_window(duration=100, final_position=(0,20)), self.move_resize_window(duration=100, final_position=(0,-20))])
 		self.ajouter_personnage_J1_button_widget.grid(column=0, row=2, sticky=tk.SW, padx=2)
 
 		# Bouton ajouter personnage pour joueur 2 VERSION 2
-		self.ajouter_personnage_J2_button_widget = tk.Button(self, text="Ajouter Personnage", highlightbackground=bg_color, activeforeground = "green", command=lambda: [self.creer_personnage(1), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#0F0", bg_color, 500), self.move_resize_window(duration=100, final_position=(0,-20)), self.move_resize_window(duration=100, final_position=(0,20))])
+		self.ajouter_personnage_J2_button_widget = tk.Button(self, text="Ajouter Personnage", highlightbackground=bg_color, activeforeground = "green", foreground="black", command=lambda: [self.creer_personnage(1), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#0F0", bg_color, 500), self.move_resize_window(duration=100, final_position=(0,-20)), self.move_resize_window(duration=100, final_position=(0,20))])
 		self.ajouter_personnage_J2_button_widget.grid(column=3, row=2, sticky=tk.SE, padx=2)
 
 
@@ -454,7 +455,7 @@ class Application(tk.Tk):
 		# Bouton secret : active/désactive le mode dvd screensaver ainsi que rainbow background (où la fenêtre rebondit sur les bords et change de couleur continuellement)
 		self.dvd_screensaver_secret_button = tk.Button(self, 
 						 text="Activer/Desactiver le mode DVD screensaver et Rainbow\n(note : le bouton escape risque de ne plus\n fonctionner pour fermer la fenêtre\ntant que vous n'avez pas reclické sur ce bouton\nLe jeu est fini vous pouvez fermer cette fenêtre\nune fois que le fun que ce bouton amène ce termine)", 
-						 highlightbackground=bg_color, activeforeground = "red", 
+						 highlightbackground=bg_color, activeforeground = "red", foreground="black", 
 						 command=lambda: [
 							 setattr(self, 'secret_rainbow_bg_bool', 
 							 not self.secret_rainbow_bg_bool),
@@ -526,7 +527,7 @@ class Application(tk.Tk):
 
 		# on crée une listbox avec les classes
 		liste_classes = ["Barbare", "Archer", "Assassin", "Mage", "MaitreDesPoisons", "Pretre", "Druide", "Medecin", "Gardien", "Templier", "Chevalier"]
-		listbox = tk.Listbox(dialog_window)
+		listbox = tk.Listbox(dialog_window, foreground=default_text_color)
 		for classe in liste_classes:
 			listbox.insert(tk.END, classe)
 		listbox.pack(side=tk.TOP, padx=5, pady=5)
@@ -542,7 +543,7 @@ class Application(tk.Tk):
 			dialog_window.destroy()  # on ferme la fenêtre
 		
 		# on crée le bouton confirmer
-		button = tk.Button(dialog_window, text="confirmer", command=confirm)
+		button = tk.Button(dialog_window, text="confirmer", foreground="black", command=confirm)
 		button.pack(side=tk.BOTTOM, padx=5, pady=5)
 
 		# on attend que l'utilisateur confirme

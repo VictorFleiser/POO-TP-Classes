@@ -11,6 +11,7 @@ from TP1_classes_persos import *
 
 from TP1_GUI import *
 
+
 class Joueur:
 	nombre_de_joueurs = 0
 	def __init__(self):
