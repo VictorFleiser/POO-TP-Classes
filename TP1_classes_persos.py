@@ -3,7 +3,8 @@ import warnings as w
 from TP1_global_variables import *
 from TP1_functions import *
 
-decors_string = "|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|\n"
+decors_string = "|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|\n"
+decors_string2 = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
 
 #CLASSE DE BASE
 
@@ -126,7 +127,7 @@ class Barbare(Guerrier):
 		
 		self.__compteur_tours_rage = 0				#compteur de tours : inflige x2 dégats tous les 2 tours
 		self.__rage_multiplieur = 1
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Barbare : double ses dégats toutes les 2 attaques\nIl s'inflige des dégats soi même lorsequ'il attaque\nPortée : Courte\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Barbare : double ses dégats toutes les 2 attaques\nIl s'inflige des dégats soi même lorsequ'il attaque\nPortée : Courte\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 		degats = self.pts_attaque * self.__rage_multiplieur
@@ -171,7 +172,7 @@ class Archer(Guerrier):
 
 		Guerrier.__init__(self, nom, pts_attaque_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nL'Archer : Inflige plus de dégats sur les cibles loin\nInflige des coups critiques sur les cibles très loin\nPortée : Très longue\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "L'Archer : Inflige plus de dégats sur les cibles loin\nInflige des coups critiques sur les cibles très loin\nPortée : Très longue\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 		degats = self.pts_attaque
@@ -209,7 +210,7 @@ class Assassin(Guerrier):
 
 		Guerrier.__init__(self, nom, pts_attaque_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nL'Assassin : Inflige des coups critiques sur les cibles très proches\nPortée : Courte\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "L'Assassin : Inflige des coups critiques sur les cibles très proches\nPortée : Courte\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 		degats = self.pts_attaque
@@ -250,7 +251,7 @@ class Mage(Guerrier):
 
 		Guerrier.__init__(self, nom, pts_attaque_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Mage : Inflige des dégats à 5 cibles\nPortée : Moyenne\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Mage : Inflige des dégats à 5 cibles\nPortée : Moyenne\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 
@@ -299,7 +300,7 @@ class MaitreDesPoisons(Guerrier):
 
 		Guerrier.__init__(self, nom, pts_attaque_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Maitre des poisons : Inflige des dégats à 4 cibles ainsi que l'effet poison\nPortée : Moyenne\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Maitre des poisons : Inflige des dégats à 4 cibles ainsi que l'effet poison\nPortée : Moyenne\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 
@@ -352,7 +353,7 @@ class MaitreDesPoisons(Guerrier):
 
 		Guerrier.__init__(self, nom, pts_attaque_modifier, pv_modifier)
 		
-		self.__description_personnage = "\n\n\t-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n\tLe Sorcier de Chaos : possède des effets aléatoires :\n\n\t4/5 : choisit des cibles adverses\n\t1/5 : choisit des cibles alliées\n\n\t16/20 : 1 cible choisie\n\t3/20 : entre 3 et 5 cibles choisies\n\t1/20 : tous les personnages sont choisis\n\n\t3/5 : inflige des dégats aux cibles\n\t1/5 : soigne les cibles\n\t1/5 : donne un effet aléatoire (durée aléatoire)\n\n\tPortée : infinie\n\t-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = "\n\n\t-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n\tLe Sorcier de Chaos : possède des effets aléatoires :\n\n\t4/5 : choisit des cibles adverses\n\t1/5 : choisit des cibles alliées\n\n\t16/20 : 1 cible choisie\n\t3/20 : entre 3 et 5 cibles choisies\n\t1/20 : tous les personnages sont choisis\n\n\t3/5 : inflige des dégats aux cibles\n\t1/5 : soigne les cibles\n\t1/5 : donne un effet aléatoire (durée aléatoire)\n\n\tPortée : infinie\n\t" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 
@@ -414,7 +415,7 @@ class Pretre(Soigneur):
 
 		Soigneur.__init__(self, nom, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Prètre : soigne énormement de PV sur un allié proches\nPortée : Courte\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Prètre : soigne énormement de PV sur un allié proches\nPortée : Courte\n" + decors_string2
 
 	def soigner(self, cible: Personnage|list[Personnage]):
 		soin = self.pts_soin
@@ -452,7 +453,7 @@ class Druide(Soigneur):
 
 		Soigneur.__init__(self, nom, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Druide : soigne les PV d'un allié au cours du temps\nPortée : longue\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Druide : soigne les PV d'un allié au cours du temps\nPortée : longue\n" + decors_string2
 
 	def soigner(self, cible: Personnage|list[Personnage]):
 		soin = self.pts_soin
@@ -503,7 +504,7 @@ class Medecin(Soigneur):		#TODO : test if works correctly
 
 		Soigneur.__init__(self, nom, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Medecin : soigne des PV à 2 alliés\nPortée : longue\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Medecin : soigne des PV à 2 alliés\nPortée : longue\n" + decors_string2
 
 	def soigner(self, cible: Personnage|list[Personnage]):
 
@@ -555,7 +556,7 @@ class Gardien(Paladin):		#TODO : test soin
 
 		Paladin.__init__(self, nom, pts_attaque_modifier, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Gardien : soigne peu de PV mais sur tous les aliés sélectionés\ninflige des dégats faibles et l'effet paralyse sur 3 cibles \nPortée : longue\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Gardien : soigne peu de PV mais sur tous les aliés sélectionés\ninflige des dégats faibles et l'effet paralyse sur 3 cibles \nPortée : longue\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 
@@ -635,7 +636,7 @@ class Templier(Paladin):			#TODO : test si tou fonctionne bien
 
 		Paladin.__init__(self, nom, pts_attaque_modifier, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Templier : soigne des PV moyens à un alié\ninflige des dégats moyens à une cible ainsi que l'effet paralysé\nPortée : moyenne\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Templier : soigne des PV moyens à un alié\ninflige des dégats moyens à une cible ainsi que l'effet paralysé\nPortée : moyenne\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 
@@ -703,7 +704,7 @@ class Chevalier(Paladin):
 
 		Paladin.__init__(self, nom, pts_attaque_modifier, pts_soin_modifier, pv_modifier)
 		
-		self.__description_personnage = "-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\nLe Chevalier : soigne ses propres PV ainsi que se donne l'effet régéneration\nPeut attaquer 2 cibles à la fois\nPortée : moyenne\n-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-\n"
+		self.__description_personnage = decors_string2 + "Le Chevalier : soigne ses propres PV ainsi que se donne l'effet régéneration\nPeut attaquer 2 cibles à la fois\nPortée : moyenne\n" + decors_string2
 
 	def attaquer(self, cible: Personnage|list[Personnage]):
 

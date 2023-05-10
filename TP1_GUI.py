@@ -305,7 +305,7 @@ class Application(tk.Tk):
 		self.soigner_button_widget.grid(column=2, row=0, sticky=tk.EW, padx=2)
 
 		# Bouton pour passer son tour
-		self.passer_tour_button_widget = tk.Button(self, text="Rien faire", highlightbackground=bg_color, activeforeground = "white", foreground="black", command=lambda: [self.activate_secret_options(), self.action("nothing"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FFF", bg_color, 500), self.enlarge_window(duration=200, enlarge_amount=(-20,-20)), self.enlarge_window(duration=200, enlarge_amount=(20,20))])
+		self.passer_tour_button_widget = tk.Button(self, text="passer le tour", highlightbackground=bg_color, activeforeground = "white", foreground="black", command=lambda: [self.activate_secret_options(), self.action("nothing"), self.update_listbox_content(), self.deselect_all(), self.update_info_box_content(), self.change_bg_color("#FFF", bg_color, 500), self.enlarge_window(duration=200, enlarge_amount=(-20,-20)), self.enlarge_window(duration=200, enlarge_amount=(20,20))])
 		self.passer_tour_button_widget.grid(column=1, row=0, columnspan = 2, sticky=tk.S, padx=2)
 
 		# Bouton de Tests [IGNORER]
