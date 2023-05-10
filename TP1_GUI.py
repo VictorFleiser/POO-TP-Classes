@@ -527,7 +527,7 @@ class Application(tk.Tk):
 
 		# on crée une listbox avec les classes
 		liste_classes = ["Barbare", "Archer", "Assassin", "Mage", "MaitreDesPoisons", "Pretre", "Druide", "Medecin", "Gardien", "Templier", "Chevalier"]
-		listbox = tk.Listbox(dialog_window, foreground=default_text_color)
+		listbox = tk.Listbox(dialog_window, foreground="magenta")
 		for classe in liste_classes:
 			listbox.insert(tk.END, classe)
 		listbox.pack(side=tk.TOP, padx=5, pady=5)
