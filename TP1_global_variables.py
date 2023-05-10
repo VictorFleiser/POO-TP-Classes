@@ -1,14 +1,14 @@
-#Booleen pour autoriser les chaines de couleurs, Désactiver si les couleurs sont incompatibles avec le terminal
+#Booleen pour autoriser les chaines de couleurs, NE PAS ACTIVER car ne fonctionne que sur le terminal
+#Si actif avec Tkinter il y aura des ansi escape code dans les strings
 couleurs_autorise_bool = False
 
 #Nombre de personnages initialement
 nombre_de_personnages = 5
 
-#Nombre de joueurs, NE PAS MODIFIER, CAR PLUS (OU MOINS) DE 2 JOUEURS N'EST PAS IMPLEMENTé
-nombre_de_joueurs = 2
+#Booleen autorisant la fenêtre à être déplacée et redimensionnée automatiquement
+#Désactiver si le déplacement/redimensionnement de la fenêtre pose problème
+move_and_resize_window_with_actions_bool = True
 
-
-
-'''Known Glitches :
-- Double clicking on personnage will switch the selected display only once
-'''
+#non implémenté : 
+#create_additional_windows_for_sprite = True	#non implémenté : manque de temps
+#transparent_sprite_windows = True				#non implémenté : trop de différences pour le code en fonction du système d'exploitation

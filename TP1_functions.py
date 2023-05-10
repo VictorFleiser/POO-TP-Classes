@@ -2,7 +2,7 @@ import random as r
 import warnings as w
 
 # FONCTION POUR COLORER LES CHAINES DE CARACTERES
-
+# Maleuresement ne fonctionne que dans le terminal et non sur tkinter, donc complétement inutile dans le rendu final
 COLOR = {
     'blue': '\033[94m',
     'default': '\033[99m',
@@ -16,12 +16,14 @@ COLOR = {
     'red': '\033[91m'
 }
 
+# Maleuresement ne fonctionne que dans le terminal et non sur tkinter, donc complétement inutile dans le rendu final
 def color_string(string, couleur, couleurs_autorise_bool):
 	'''
 	Retourne la chaine de caractères colorée avec la couleur sélectionnées (cf : dictionnaire 'COLOR') si couleurs_autorise_bool est vrai
 	'''
 	return (COLOR.get(couleur, COLOR['default']) + string + '\033[0m' if couleurs_autorise_bool else string)
 
+# Maleuresement ne fonctionne que dans le terminal et non sur tkinter, donc complétement inutile dans le rendu final
 def pv_color(pv, pv_max):
 	'''
 	Retourne la chaine de caractères de la couleur correspondant à ce niveau de PV :
@@ -56,7 +58,7 @@ def get_random_name():
 
 def get_random_name_description():
 	'''
-	Retourne une description de nom aléatoire parmis les 56 descriptions disponibles dans list_of_name_description.txt (dans le même dossier)
+	Retourne une description épique de nom aléatoire parmis les 45 descriptions disponibles dans list_of_name_description.txt (dans le même dossier)
 	'''
 	with open("list_of_name_description.txt", "r") as file:
 		name_description = file.readlines()
@@ -73,8 +75,6 @@ def random_name():
 # FONCTIONS D'OPERATIONS MATHEMATIQUES POUR MODIFIER LINEAIREMENT UNE VALEUR EN FONCTION DE LA DISTANCE
 
 def reduction_lineaire(distance, distance_down, distance_up, valeur_down, valeur_up, sens="down"):
-
-
 	'''
 	Réduit une valeur (dégats, soin...) de manière linéaire sur la plage [valeur_down;valeur_up] 
 	en fonction de la distance sur une plage [distance_down;distance_up]; 
@@ -104,12 +104,3 @@ def reduction_lineaire(distance, distance_down, distance_up, valeur_down, valeur
 		return(valeur_down + (1-x)*delta_valeur)
 	else :
 		return(valeur_down+x*delta_valeur)
-
-'''
-
-#tests:
-for i in range(25, 75):
-#	print(str(i)+" : "+str(reduction_lineaire(i, 25, 75, 5, 30)))
-	print(str(reduction_lineaire(i, 25, 75, 5, 30)))
-
-'''
